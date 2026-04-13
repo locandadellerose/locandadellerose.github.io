@@ -4,158 +4,266 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Frigo Bar | La Locanda delle Rose</title>
+
   <style>
-    :root {
-      --bg: #f7f2ea;
-      --card: #fffdf9;
-      --text: #2f2a26;
-      --muted: #7a6f67;
-      --accent: #7b2f3f;
-      --accent-soft: #b08b57;
-      --line: #e5dbcf;
+    :root{
+      --bg:#f6f1ea;
+      --card:#fffdf9;
+      --card-2:#fcf7f1;
+      --text:#2f2a26;
+      --muted:#7b7068;
+      --accent:#7b2f3f;
+      --accent-soft:#b08b57;
+      --line:#e7ddd2;
+      --shadow:0 18px 40px rgba(77,56,40,.08);
+      --radius:24px;
     }
 
-    * {
-      box-sizing: border-box;
+    *{
+      box-sizing:border-box;
     }
 
-    body {
-      margin: 0;
-      background: linear-gradient(180deg, #fbf8f4 0%, var(--bg) 100%);
-      color: var(--text);
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      margin:0;
       font-family: Georgia, "Times New Roman", serif;
-      line-height: 1.5;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top left, #fffaf3 0%, #f6f1ea 42%, #f2ebe3 100%);
+      line-height:1.5;
     }
 
-    .wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 28px 18px 48px;
+    .page{
+      max-width:980px;
+      margin:0 auto;
+      padding:26px 16px 48px;
     }
 
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
-      overflow: hidden;
+    .shell{
+      background:linear-gradient(180deg, #fffdfa 0%, #fcf8f3 100%);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      position:relative;
     }
 
-    .hero {
-      text-align: center;
-      padding: 34px 22px 24px;
-      border-bottom: 1px solid var(--line);
-      background: linear-gradient(180deg, #fffdfa 0%, #faf5ef 100%);
+    .shell::before,
+    .shell::after{
+      content:"";
+      position:absolute;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(176,139,87,.08) 0%, rgba(176,139,87,0) 70%);
+      pointer-events:none;
+      z-index:0;
     }
 
-    .brand {
-      font-size: 13px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent-soft);
-      margin-bottom: 8px;
+    .shell::before{
+      top:-70px;
+      left:-70px;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 38px;
-      color: var(--accent);
-      font-weight: 700;
+    .shell::after{
+      bottom:-90px;
+      right:-80px;
     }
 
-    .subtitle {
-      max-width: 620px;
-      margin: 12px auto 0;
-      color: var(--muted);
-      font-size: 17px;
+    .hero{
+      position:relative;
+      z-index:1;
+      padding:30px 22px 26px;
+      text-align:center;
+      background:
+        linear-gradient(180deg, rgba(255,253,250,1) 0%, rgba(251,245,238,1) 100%);
+      border-bottom:1px solid var(--line);
     }
 
-    .cart-box {
-      margin-top: 18px;
-      display: flex;
-      justify-content: center;
+    .logo-wrap{
+      display:flex;
+      justify-content:center;
+      margin-bottom:12px;
     }
 
-    .section {
-      padding: 24px 22px 8px;
+    .logo-wrap img{
+      width:min(100%, 360px);
+      height:auto;
+      display:block;
     }
 
-    .section-title {
-      margin: 0 0 14px;
-      font-size: 20px;
-      color: var(--accent);
-      border-bottom: 1px solid var(--line);
-      padding-bottom: 8px;
+    .hero h1{
+      margin:6px 0 0;
+      font-size:42px;
+      line-height:1.05;
+      color:var(--accent);
+      font-weight:700;
+      letter-spacing:.01em;
     }
 
-    .menu-list {
-      display: grid;
-      gap: 0;
+    .hero p{
+      max-width:700px;
+      margin:14px auto 0;
+      font-size:18px;
+      color:var(--muted);
     }
 
-    .item {
-      display: block;
-      padding: 12px 0;
-      border-bottom: 1px solid #efe7dd;
+    .cart-area{
+      margin-top:20px;
+      display:flex;
+      justify-content:center;
     }
 
-    .item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 16px;
+    .content{
+      position:relative;
+      z-index:1;
+      padding:4px 0 0;
     }
 
-    .item-name {
-      font-size: 17px;
-      flex: 1;
+    .section{
+      padding:24px 22px 8px;
     }
 
-    .item-price {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--accent);
-      white-space: nowrap;
-      text-align: right;
-      margin-top: 0;
+    .section + .section{
+      padding-top:10px;
     }
 
-    .paypal-box {
-      margin-top: 12px;
-      text-align: left;
-      max-width: 100%;
-      overflow-x: auto;
+    .section-title{
+      margin:0 0 16px;
+      color:var(--accent);
+      font-size:26px;
+      font-weight:700;
+      display:flex;
+      align-items:center;
+      gap:14px;
     }
 
-    .note {
-      padding: 20px 22px 28px;
-      color: var(--muted);
-      font-size: 15px;
+    .section-title::after{
+      content:"";
+      flex:1;
+      height:1px;
+      background:linear-gradient(90deg, rgba(176,139,87,.55) 0%, rgba(231,221,210,1) 100%);
     }
 
-    .note p {
-      margin: 0 0 10px;
+    .menu-list{
+      display:grid;
+      gap:0;
     }
 
-    .footer-line {
-      height: 1px;
-      background: var(--line);
-      margin: 0 22px;
+    .item{
+      padding:16px 0 18px;
+      border-bottom:1px solid #eee4d8;
     }
 
-    @media (max-width: 640px) {
-      h1 {
-        font-size: 31px;
+    .item-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:16px;
+    }
+
+    .item-name{
+      font-size:20px;
+      flex:1;
+    }
+
+    .item-price{
+      font-size:20px;
+      font-weight:700;
+      color:var(--accent);
+      white-space:nowrap;
+      padding-left:10px;
+    }
+
+    .paypal-box{
+      margin-top:12px;
+      display:block;
+      max-width:100%;
+      overflow-x:auto;
+      padding-bottom:2px;
+    }
+
+    .footer-line{
+      height:1px;
+      background:var(--line);
+      margin:8px 22px 0;
+    }
+
+    .note{
+      padding:20px 22px 28px;
+      color:var(--muted);
+      font-size:15px;
+      text-align:center;
+    }
+
+    .note p{
+      margin:0;
+    }
+
+    .micro-note{
+      margin-top:10px;
+      font-size:14px;
+      color:#8a8078;
+    }
+
+    @media (max-width: 760px){
+      .hero{
+        padding:24px 18px 22px;
       }
 
-      .subtitle,
+      .hero h1{
+        font-size:34px;
+      }
+
+      .hero p{
+        font-size:16px;
+      }
+
+      .section{
+        padding:20px 18px 8px;
+      }
+
+      .section-title{
+        font-size:22px;
+      }
+
+      .item{
+        padding:14px 0 16px;
+      }
+
+      .item-header{
+        gap:12px;
+      }
+
       .item-name,
-      .item-price {
-        font-size: 16px;
+      .item-price{
+        font-size:18px;
       }
 
-      .item-header {
-        gap: 12px;
+      .logo-wrap img{
+        width:min(100%, 300px);
+      }
+    }
+
+    @media (max-width: 520px){
+      .page{
+        padding:16px 10px 32px;
+      }
+
+      .hero h1{
+        font-size:30px;
+      }
+
+      .item-name,
+      .item-price{
+        font-size:17px;
+      }
+
+      .section-title{
+        font-size:21px;
       }
     }
   </style>
@@ -163,16 +271,21 @@
   <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="L4R2Z2YWMKTBY"></script>
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
+  <div class="page">
+    <div class="shell">
+
       <div class="hero">
-        <div class="brand">La Locanda delle Rose</div>
-        <h1>Frigo Bar</h1>
-        <div class="subtitle">
-          Selezione disponibile in camera. I prodotti possono essere richiesti e saldati direttamente online tramite PayPal.
+        <div class="logo-wrap">
+          <img src="Logo%20Locanda%20delle%20Rose%20Istituz.jpg" alt="La Locanda delle Rose">
         </div>
 
-        <div class="cart-box">
+        <h1>Frigo Bar</h1>
+        <p>
+          Selezione disponibile in camera. Potete aggiungere i prodotti al carrello
+          e completare comodamente il pagamento online tramite PayPal.
+        </p>
+
+        <div class="cart-area">
           <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
           <script>
             cartPaypal.Cart({ id: "pp-view-cart" })
@@ -180,220 +293,225 @@
         </div>
       </div>
 
-      <div class="section">
-        <h2 class="section-title">Soft Drinks</h2>
-        <div class="menu-list">
+      <div class="content">
 
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Kinley Tonic cl 15</div>
-              <div class="item-price">€ 2,00</div>
+        <div class="section">
+          <h2 class="section-title">Soft Drinks</h2>
+          <div class="menu-list">
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Kinley Tonic cl 15</div>
+                <div class="item-price">€ 2,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="XFTTZ3AX9FG7W"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "XFTTZ3AX9FG7W" })</script>
+              </div>
             </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="XFTTZ3AX9FG7W"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "XFTTZ3AX9FG7W" })</script>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Succo di frutta Derby Pera cl 20</div>
+                <div class="item-price">€ 1,50</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="2MRB9UVHJEC9C"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "2MRB9UVHJEC9C" })</script>
+              </div>
             </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Succo di frutta Derby Pesca cl 20</div>
+                <div class="item-price">€ 1,50</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="YTH9MCPVJZDMA"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "YTH9MCPVJZDMA" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Coca-Cola cl 15</div>
+                <div class="item-price">€ 2,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="PVVUA8FWMARJW"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "PVVUA8FWMARJW" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Coca 0 cl 15</div>
+                <div class="item-price">€ 2,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="G22GUKVTD4LXC"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "G22GUKVTD4LXC" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Fanta Orange cl 15</div>
+                <div class="item-price">€ 2,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="FVLAVU765BH74"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "FVLAVU765BH74" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Acqua naturale cl 50</div>
+                <div class="item-price">€ 1,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="TUE92VSH2APP6"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "TUE92VSH2APP6" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Acqua frizzante cl 50</div>
+                <div class="item-price">€ 1,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="QP39TJ23RWAJU"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "QP39TJ23RWAJU" })</script>
+              </div>
+            </div>
+
           </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Succo di frutta Derby Pera cl 20</div>
-              <div class="item-price">€ 1,50</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="2MRB9UVHJEC9C"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "2MRB9UVHJEC9C" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Succo di frutta Derby Pesca cl 20</div>
-              <div class="item-price">€ 1,50</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="YTH9MCPVJZDMA"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "YTH9MCPVJZDMA" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Coca-Cola cl 15</div>
-              <div class="item-price">€ 2,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="PVVUA8FWMARJW"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "PVVUA8FWMARJW" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Coca 0 cl 15</div>
-              <div class="item-price">€ 2,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="G22GUKVTD4LXC"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "G22GUKVTD4LXC" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Fanta Orange cl 15</div>
-              <div class="item-price">€ 2,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="FVLAVU765BH74"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "FVLAVU765BH74" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Acqua naturale cl 50</div>
-              <div class="item-price">€ 1,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="TUE92VSH2APP6"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "TUE92VSH2APP6" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Acqua frizzante cl 50</div>
-              <div class="item-price">€ 1,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="QP39TJ23RWAJU"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "QP39TJ23RWAJU" })</script>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <div class="section">
-        <h2 class="section-title">Liquori</h2>
-        <div class="menu-list">
+        <div class="section">
+          <h2 class="section-title">Liquori</h2>
+          <div class="menu-list">
 
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Gin Mession cl 5</div>
-              <div class="item-price">€ 15,00</div>
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Gin Mession cl 5</div>
+                <div class="item-price">€ 15,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="GA7QMK27V9M9N"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "GA7QMK27V9M9N" })</script>
+              </div>
             </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="GA7QMK27V9M9N"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "GA7QMK27V9M9N" })</script>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Amaro Jägermeister cl 20</div>
+                <div class="item-price">€ 3,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="Y4K6CFARCXFL4"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "Y4K6CFARCXFL4" })</script>
+              </div>
             </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Limoncello cl 10</div>
+                <div class="item-price">€ 15,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="HJNX2KRAZZNE4"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "HJNX2KRAZZNE4" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Amaro Amaranca cl 10</div>
+                <div class="item-price">€ 15,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="B3BGSLBLF89FE"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "B3BGSLBLF89FE" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Rum cl 5</div>
+                <div class="item-price">€ 8,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="M9U734C75VN26"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "M9U734C75VN26" })</script>
+              </div>
+            </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Grappa Nardini Riserva cl 5</div>
+                <div class="item-price">€ 10,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="AB5SZXP2H2A98"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "AB5SZXP2H2A98" })</script>
+              </div>
+            </div>
+
           </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Amaro Jägermeister cl 20</div>
-              <div class="item-price">€ 3,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="Y4K6CFARCXFL4"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "Y4K6CFARCXFL4" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Limoncello cl 10</div>
-              <div class="item-price">€ 15,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="HJNX2KRAZZNE4"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "HJNX2KRAZZNE4" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Amaro Amaranca cl 10</div>
-              <div class="item-price">€ 15,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="B3BGSLBLF89FE"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "B3BGSLBLF89FE" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Rum cl 5</div>
-              <div class="item-price">€ 8,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="M9U734C75VN26"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "M9U734C75VN26" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Grappa Nardini Riserva cl 5</div>
-              <div class="item-price">€ 10,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="AB5SZXP2H2A98"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "AB5SZXP2H2A98" })</script>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <div class="section">
-        <h2 class="section-title">Bollicine &amp; Vini</h2>
-        <div class="menu-list">
+        <div class="section">
+          <h2 class="section-title">Bollicine &amp; Vini</h2>
+          <div class="menu-list">
 
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Prosecchino Maschio cl 20</div>
-              <div class="item-price">€ 7,00</div>
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Prosecchino Maschio cl 20</div>
+                <div class="item-price">€ 7,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="HVCHXJDF3SSBJ"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "HVCHXJDF3SSBJ" })</script>
+              </div>
             </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="HVCHXJDF3SSBJ"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "HVCHXJDF3SSBJ" })</script>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Malvasia cl 10</div>
+                <div class="item-price">€ 15,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="K5YWLKQYZMQ28"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "K5YWLKQYZMQ28" })</script>
+              </div>
             </div>
+
+            <div class="item">
+              <div class="item-header">
+                <div class="item-name">Prosecco DOC cl 75 <span style="color:#7b7068;">su richiesta</span></div>
+                <div class="item-price">€ 20,00</div>
+              </div>
+              <div class="paypal-box">
+                <paypal-add-to-cart-button data-id="P4Y3G52CALZMJ"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "P4Y3G52CALZMJ" })</script>
+              </div>
+            </div>
+
           </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Malvasia cl 10</div>
-              <div class="item-price">€ 15,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="K5YWLKQYZMQ28"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "K5YWLKQYZMQ28" })</script>
-            </div>
-          </div>
-
-          <div class="item">
-            <div class="item-header">
-              <div class="item-name">Prosecco DOC cl 75 <span style="color:#7a6f67;">su richiesta</span></div>
-              <div class="item-price">€ 20,00</div>
-            </div>
-            <div class="paypal-box">
-              <paypal-add-to-cart-button data-id="P4Y3G52CALZMJ"></paypal-add-to-cart-button>
-              <script>cartPaypal.AddToCart({ id: "P4Y3G52CALZMJ" })</script>
-            </div>
-          </div>
-
         </div>
-      </div>
 
-      <div class="footer-line"></div>
+        <div class="footer-line"></div>
 
-      <div class="note">
-        <p>La disponibilità di alcuni prodotti può variare.</p>
+        <div class="note">
+          <p>La disponibilità di alcuni prodotti può variare.</p>
+          <div class="micro-note">Per qualsiasi esigenza particolare, potete contattare direttamente la struttura.</div>
+        </div>
+
       </div>
     </div>
   </div>
 </body>
-  </html>
+</html>

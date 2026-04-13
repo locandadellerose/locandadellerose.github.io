@@ -9,7 +9,6 @@
     :root{
       --bg:#f6f1ea;
       --card:#fffdf9;
-      --card-2:#fcf7f1;
       --text:#2f2a26;
       --muted:#7b7068;
       --accent:#7b2f3f;
@@ -34,6 +33,11 @@
       background:
         radial-gradient(circle at top left, #fffaf3 0%, #f6f1ea 42%, #f2ebe3 100%);
       line-height:1.5;
+    }
+
+    a{
+      color:var(--accent);
+      text-decoration:none;
     }
 
     .page{
@@ -200,13 +204,20 @@
     }
 
     .note p{
-      margin:0;
+      margin:0 0 8px;
     }
 
     .micro-note{
       margin-top:10px;
       font-size:14px;
       color:#8a8078;
+    }
+
+    .direct-link{
+      margin-top:12px;
+      font-size:14px;
+      color:#7b7068;
+      word-break:break-word;
     }
 
     @media (max-width: 760px){
@@ -290,6 +301,10 @@
           <script>
             cartPaypal.Cart({ id: "pp-view-cart" })
           </script>
+        </div>
+
+        <div class="direct-link">
+          Link diretto: <a href="https://locandadellerose.github.io/" target="_blank">locandadellerose.github.io</a>
         </div>
       </div>
 
@@ -400,8 +415,8 @@
                 <div class="item-price">€ 15,00</div>
               </div>
               <div class="paypal-box">
-                <paypal-add-to-cart-button data-id="GA7QMK27V9M9N"></paypal-add-to-cart-button>
-                <script>cartPaypal.AddToCart({ id: "GA7QMK27V9M9N" })</script>
+                <paypal-add-to-cart-button data-id="9LJKHXDC2YSSE"></paypal-add-to-cart-button>
+                <script>cartPaypal.AddToCart({ id: "9LJKHXDC2YSSE" })</script>
               </div>
             </div>
 
@@ -506,6 +521,7 @@
         <div class="footer-line"></div>
 
         <div class="note">
+          <p>I prodotti eventualmente consumati e non saldati online saranno successivamente addebitati sul conto della camera.</p>
           <p>La disponibilità di alcuni prodotti può variare.</p>
           <div class="micro-note">Per qualsiasi esigenza particolare, potete contattare direttamente la struttura.</div>
         </div>

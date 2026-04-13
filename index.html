@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frigo Bar | La Locanda delle Rose</title>
+  <style>
+    :root {
+      --bg: #f7f2ea;
+      --card: #fffdf9;
+      --text: #2f2a26;
+      --muted: #7a6f67;
+      --accent: #7b2f3f;
+      --accent-soft: #b08b57;
+      --line: #e5dbcf;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #fbf8f4 0%, var(--bg) 100%);
+      color: var(--text);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.5;
+    }
+    .wrap {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 28px 18px 48px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, 0.06);
+      overflow: hidden;
+    }
+    .hero {
+      text-align: center;
+      padding: 34px 22px 24px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #fffdfa 0%, #faf5ef 100%);
+    }
+    .brand {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      margin-bottom: 8px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 38px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .subtitle {
+      max-width: 620px;
+      margin: 12px auto 0;
+      color: var(--muted);
+      font-size: 17px;
+    }
+    .section {
+      padding: 24px 22px 8px;
+    }
+    .section-title {
+      margin: 0 0 14px;
+      font-size: 20px;
+      color: var(--accent);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 8px;
+    }
+    .menu-list {
+      display: grid;
+      gap: 0;
+    }
+    .item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #efe7dd;
+    }
+    .item-name {
+      font-size: 17px;
+    }
+    .item-price {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .note {
+      padding: 20px 22px 28px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    .note p {
+      margin: 0 0 10px;
+    }
+    .footer-line {
+      height: 1px;
+      background: var(--line);
+      margin: 0 22px;
+    }
+    @media (max-width: 640px) {
+      h1 { font-size: 31px; }
+      .subtitle, .item-name, .item-price { font-size: 16px; }
+      .item { grid-template-columns: 1fr auto; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="hero">
+        <div class="brand">La Locanda delle Rose</div>
+        <h1>Frigo Bar</h1>
+        <div class="subtitle">
+          Selezione disponibile in camera. I prodotti possono essere richiesti e saldati secondo le modalità indicate dalla struttura.
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Soft Drinks</h2>
+        <div class="menu-list">
+          <div class="item"><div class="item-name">Kinley Tonic cl 15</div><div class="item-price">€ 2,00</div></div>
+          <div class="item"><div class="item-name">Succo di frutta Derby Pera cl 20</div><div class="item-price">€ 1,50</div></div>
+          <div class="item"><div class="item-name">Succo di frutta Derby Pesca cl 20</div><div class="item-price">€ 1,50</div></div>
+          <div class="item"><div class="item-name">Coca-Cola cl 15</div><div class="item-price">€ 2,00</div></div>
+          <div class="item"><div class="item-name">Coca 0 cl 15</div><div class="item-price">€ 2,00</div></div>
+          <div class="item"><div class="item-name">Fanta Orange cl 15</div><div class="item-price">€ 2,00</div></div>
+          <div class="item"><div class="item-name">Acqua naturale / frizzante cl 50</div><div class="item-price">€ 1,00</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Liquori</h2>
+        <div class="menu-list">
+          <div class="item"><div class="item-name">Gin Mession cl 5</div><div class="item-price">€ 15,00</div></div>
+          <div class="item"><div class="item-name">Amaro Jägermeister cl 20</div><div class="item-price">€ 2,00</div></div>
+          <div class="item"><div class="item-name">Sicilia Limoncello cl 10</div><div class="item-price">€ 15,00</div></div>
+          <div class="item"><div class="item-name">Amaro Amaranca cl 10</div><div class="item-price">€ 15,00</div></div>
+          <div class="item"><div class="item-name">Rum cl 5</div><div class="item-price">€ 8,00</div></div>
+          <div class="item"><div class="item-name">Grappa Nardini Riserva cl 5</div><div class="item-price">€ 10,00</div></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2 class="section-title">Bollicine &amp; Vini</h2>
+        <div class="menu-list">
+          <div class="item"><div class="item-name">Prosecchino Maschio cl 20</div><div class="item-price">€ 7,00</div></div>
+          <div class="item"><div class="item-name">Sicilia Malvasia cl 10</div><div class="item-price">€ 15,00</div></div>
+          <div class="item"><div class="item-name">Prosecco DOC cl 75 <span style="color:#7a6f67;">su richiesta</span></div><div class="item-price">€ 20,00</div></div>
+        </div>
+      </div>
+
+      <div class="footer-line"></div>
+
+      <div class="note">
+        <p>La disponibilità di alcuni prodotti può variare.</p>
+      </div>
+    </div>
+  </div>
+</body>
+            </html>

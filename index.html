@@ -70,6 +70,12 @@
       font-size: 17px;
     }
 
+    .cart-box {
+      margin-top: 18px;
+      display: flex;
+      justify-content: center;
+    }
+
     .section {
       padding: 24px 22px 8px;
     }
@@ -88,16 +94,21 @@
     }
 
     .item {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      align-items: center;
+      display: block;
       padding: 12px 0;
       border-bottom: 1px solid #efe7dd;
     }
 
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
     .item-name {
       font-size: 17px;
+      flex: 1;
     }
 
     .item-price {
@@ -106,6 +117,14 @@
       color: var(--accent);
       white-space: nowrap;
       text-align: right;
+      margin-top: 0;
+    }
+
+    .paypal-box {
+      margin-top: 12px;
+      text-align: left;
+      max-width: 100%;
+      overflow-x: auto;
     }
 
     .note {
@@ -124,11 +143,6 @@
       margin: 0 22px;
     }
 
-    .paypal-box {
-      margin-top: 8px;
-      text-align: right;
-    }
-
     @media (max-width: 640px) {
       h1 {
         font-size: 31px;
@@ -140,8 +154,8 @@
         font-size: 16px;
       }
 
-      .item {
-        grid-template-columns: 1fr auto;
+      .item-header {
+        gap: 12px;
       }
     }
   </style>
@@ -158,7 +172,7 @@
           Selezione disponibile in camera. I prodotti possono essere richiesti e saldati secondo le modalità indicate dalla struttura.
         </div>
 
-        <div style="margin-top:18px;">
+        <div class="cart-box">
           <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
           <script>
             cartPaypal.Cart({ id: "pp-view-cart" })
@@ -171,46 +185,58 @@
         <div class="menu-list">
 
           <div class="item">
-            <div class="item-name">Kinley Tonic cl 15</div>
-            <div>
+            <div class="item-header">
+              <div class="item-name">Kinley Tonic cl 15</div>
               <div class="item-price">€ 2,00</div>
-              <div class="paypal-box">
-                <paypal-add-to-cart-button data-id="XFTTZ3AX9FG7W"></paypal-add-to-cart-button>
-                <script>
-                  cartPaypal.AddToCart({ id: "XFTTZ3AX9FG7W" })
-                </script>
-              </div>
+            </div>
+            <div class="paypal-box">
+              <paypal-add-to-cart-button data-id="XFTTZ3AX9FG7W"></paypal-add-to-cart-button>
+              <script>
+                cartPaypal.AddToCart({ id: "XFTTZ3AX9FG7W" })
+              </script>
             </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Succo di frutta Derby Pera cl 20</div>
-            <div class="item-price">€ 1,50</div>
+            <div class="item-header">
+              <div class="item-name">Succo di frutta Derby Pera cl 20</div>
+              <div class="item-price">€ 1,50</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Succo di frutta Derby Pesca cl 20</div>
-            <div class="item-price">€ 1,50</div>
+            <div class="item-header">
+              <div class="item-name">Succo di frutta Derby Pesca cl 20</div>
+              <div class="item-price">€ 1,50</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Coca-Cola cl 15</div>
-            <div class="item-price">€ 2,00</div>
+            <div class="item-header">
+              <div class="item-name">Coca-Cola cl 15</div>
+              <div class="item-price">€ 2,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Coca 0 cl 15</div>
-            <div class="item-price">€ 2,00</div>
+            <div class="item-header">
+              <div class="item-name">Coca 0 cl 15</div>
+              <div class="item-price">€ 2,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Fanta Orange cl 15</div>
-            <div class="item-price">€ 2,00</div>
+            <div class="item-header">
+              <div class="item-name">Fanta Orange cl 15</div>
+              <div class="item-price">€ 2,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Acqua naturale / frizzante cl 50</div>
-            <div class="item-price">€ 1,00</div>
+            <div class="item-header">
+              <div class="item-name">Acqua naturale / frizzante cl 50</div>
+              <div class="item-price">€ 1,00</div>
+            </div>
           </div>
         </div>
       </div>
@@ -219,33 +245,45 @@
         <h2 class="section-title">Liquori</h2>
         <div class="menu-list">
           <div class="item">
-            <div class="item-name">Gin Mession cl 5</div>
-            <div class="item-price">€ 15,00</div>
+            <div class="item-header">
+              <div class="item-name">Gin Mession cl 5</div>
+              <div class="item-price">€ 15,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Amaro Jägermeister cl 20</div>
-            <div class="item-price">€ 2,00</div>
+            <div class="item-header">
+              <div class="item-name">Amaro Jägermeister cl 20</div>
+              <div class="item-price">€ 2,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Sicilia Limoncello cl 10</div>
-            <div class="item-price">€ 15,00</div>
+            <div class="item-header">
+              <div class="item-name">Sicilia Limoncello cl 10</div>
+              <div class="item-price">€ 15,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Amaro Amaranca cl 10</div>
-            <div class="item-price">€ 15,00</div>
+            <div class="item-header">
+              <div class="item-name">Amaro Amaranca cl 10</div>
+              <div class="item-price">€ 15,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Rum cl 5</div>
-            <div class="item-price">€ 8,00</div>
+            <div class="item-header">
+              <div class="item-name">Rum cl 5</div>
+              <div class="item-price">€ 8,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Grappa Nardini Riserva cl 5</div>
-            <div class="item-price">€ 10,00</div>
+            <div class="item-header">
+              <div class="item-name">Grappa Nardini Riserva cl 5</div>
+              <div class="item-price">€ 10,00</div>
+            </div>
           </div>
         </div>
       </div>
@@ -254,18 +292,24 @@
         <h2 class="section-title">Bollicine &amp; Vini</h2>
         <div class="menu-list">
           <div class="item">
-            <div class="item-name">Prosecchino Maschio cl 20</div>
-            <div class="item-price">€ 7,00</div>
+            <div class="item-header">
+              <div class="item-name">Prosecchino Maschio cl 20</div>
+              <div class="item-price">€ 7,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Sicilia Malvasia cl 10</div>
-            <div class="item-price">€ 15,00</div>
+            <div class="item-header">
+              <div class="item-name">Sicilia Malvasia cl 10</div>
+              <div class="item-price">€ 15,00</div>
+            </div>
           </div>
 
           <div class="item">
-            <div class="item-name">Prosecco DOC cl 75 <span style="color:#7a6f67;">su richiesta</span></div>
-            <div class="item-price">€ 20,00</div>
+            <div class="item-header">
+              <div class="item-name">Prosecco DOC cl 75 <span style="color:#7a6f67;">su richiesta</span></div>
+              <div class="item-price">€ 20,00</div>
+            </div>
           </div>
         </div>
       </div>
@@ -278,4 +322,4 @@
     </div>
   </div>
 </body>
-</html>
+  </html>
